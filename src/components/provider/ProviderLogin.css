@@ -1,0 +1,125 @@
+.plog {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.plog__card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: var(--shadow);
+}
+
+.plog__back {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+  width: fit-content;
+}
+
+.plog__back:hover { color: var(--text); }
+
+.plog__header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.plog__tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.plog__title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.5px;
+}
+
+.plog__sub {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.plog__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.plog__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.plog__field label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.plog__field input {
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: 'Nunito', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.plog__field input:focus {
+  border-color: var(--blue);
+  background: var(--white);
+}
+
+.plog__error {
+  font-size: 13px;
+  color: var(--red);
+  font-weight: 600;
+}
+
+.plog__btn {
+  margin-top: 4px;
+  padding: 12px;
+  background: var(--blue);
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.plog__btn:hover { opacity: 0.9; }
+
+.plog__forgot {
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.plog__forgot span {
+  color: var(--blue);
+  font-weight: 700;
+  cursor: pointer;
+}

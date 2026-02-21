@@ -1,0 +1,234 @@
+.prec {
+  min-height: 100vh;
+  padding: 40px 32px;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.prec__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.prec__back {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  padding: 0;
+  white-space: nowrap;
+  margin-top: 4px;
+}
+
+.prec__back:hover { color: var(--text); }
+
+.prec__tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 6px;
+}
+
+.prec__title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.5px;
+}
+
+.prec__sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.prec__controls {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.prec__timer {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 2px;
+  min-width: 90px;
+}
+
+.prec__timer.is-active { color: var(--red); }
+
+.prec__buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.prec__btn {
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.2s;
+}
+
+.prec__btn--record {
+  background: var(--red);
+  color: white;
+}
+
+.prec__btn--pause {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  color: var(--text);
+}
+
+.prec__btn--stop {
+  background: var(--text);
+  color: white;
+}
+
+.prec__btn:hover { opacity: 0.85; }
+
+.prec__indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--red);
+}
+
+.prec__indicator--paused { color: var(--muted); }
+
+.prec__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--red);
+  animation: pulse 1.2s infinite;
+}
+
+.prec__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  flex: 1;
+}
+
+.prec__transcript-wrap,
+.prec__notes-wrap {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.prec__section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.prec__transcript {
+  flex: 1;
+  min-height: 300px;
+  max-height: 600px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.prec__empty {
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.prec__line {
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.prec__notes-list {
+  flex: 1;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.prec__note {
+  font-size: 13px;
+  padding: 8px 12px;
+  background: var(--bg);
+  border-radius: 8px;
+  color: var(--text);
+  border-left: 3px solid var(--blue);
+}
+
+.prec__note-input {
+  display: flex;
+  gap: 8px;
+}
+
+.prec__note-input input {
+  flex: 1;
+  padding: 9px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: 'Nunito', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+}
+
+.prec__note-input input:focus { border-color: var(--blue); }
+
+.prec__note-input button {
+  padding: 9px 16px;
+  background: var(--blue);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.prec__note-input button:hover { opacity: 0.9; }
+
+@media (max-width: 640px) {
+  .prec { padding: 24px 16px; }
+  .prec__body { grid-template-columns: 1fr; }
+}
