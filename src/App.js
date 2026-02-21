@@ -5,6 +5,7 @@ import ProviderLogin from './components/provider/ProviderLogin';
 import ProviderDashboard from './components/provider/ProviderDashboard';
 import ProviderRecord from './components/provider/ProviderRecord';
 import ProviderSummary from './components/provider/ProviderSummary';
+import ProviderLoading from './components/provider/ProviderLoading';
 
 import PatientLogin from './components/patient/PatientLogin';
 import PatientDashboard from './components/patient/PatientDashboard';
@@ -20,6 +21,7 @@ function App() {
         <Route path="/provider/dashboard" element={<ProviderDashboard />} />
         <Route path="/provider/record" element={<ProviderRecord />} />
         <Route path="/provider/summary" element={<ProviderSummary />} />
+        <Route path="/provider/loading" element={<ProviderLoading />} />
 
         <Route path="/patient/login" element={<PatientLogin />} />
         <Route path="/patient/dashboard" element={<PatientDashboard />} />

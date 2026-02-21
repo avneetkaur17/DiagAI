@@ -51,6 +51,16 @@
   margin-top: 4px;
 }
 
+.psum__published-banner {
+  background: var(--green-light);
+  border: 1.5px solid var(--green);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green);
+}
+
 .psum__body {
   display: flex;
   flex-direction: column;
@@ -79,6 +89,12 @@
   font-size: 12px;
   color: var(--muted);
   margin-top: -4px;
+}
+
+.psum__text {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.7;
 }
 
 .psum__textarea {
@@ -120,6 +136,12 @@
   background: var(--blue-light);
 }
 
+.psum__med--chosen {
+  border-color: var(--green);
+  background: var(--green-light);
+  cursor: default;
+}
+
 .psum__med-top {
   display: flex;
   justify-content: space-between;
@@ -149,6 +171,51 @@
   font-weight: 700;
   color: var(--blue);
   margin-top: 8px;
+}
+
+.psum__info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.psum__info-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.psum__info-field label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.psum__info-field input {
+  padding: 9px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: 'Nunito', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.psum__info-field input:focus {
+  border-color: var(--blue);
+  background: var(--white);
+}
+
+.psum__followup-confirm {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--green);
+  background: var(--green-light);
+  border: 1.5px solid var(--green);
+  border-radius: 8px;
+  padding: 10px 14px;
 }
 
 .psum__footer {
@@ -182,38 +249,8 @@
 
 .psum__btn:hover { opacity: 0.9; }
 
-.psum__success {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  gap: 16px;
-  text-align: center;
-}
-
-.psum__success-icon {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: var(--green-light);
-  color: var(--green);
-  font-size: 28px;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.psum__success h2 {
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--text);
-}
-
-.psum__success p {
-  font-size: 14px;
-  color: var(--muted);
-  max-width: 360px;
-  line-height: 1.6;
+@media (max-width: 600px) {
+  .psum { padding: 24px 16px; }
+  .psum__info-grid { grid-template-columns: 1fr; }
+  .psum__footer { flex-direction: column; align-items: flex-start; }
 }

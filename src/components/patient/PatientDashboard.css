@@ -304,6 +304,107 @@
   color: var(--red);
 }
 
+.pdash-p__result {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pdash-p__result--abnormal { border-left: 4px solid var(--red); }
+.pdash-p__result--warning { border-left: 4px solid #F59E0B; }
+.pdash-p__result--normal { border-left: 4px solid var(--green); }
+
+.pdash-p__result-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.pdash-p__result-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.pdash-p__result-date {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.pdash-p__result-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 99px;
+}
+
+.pdash-p__result-badge--normal { background: var(--green-light); color: var(--green); }
+.pdash-p__result-badge--abnormal { background: var(--red-light); color: var(--red); }
+.pdash-p__result-badge--warning { background: #FEF3C7; color: #B45309; }
+
+.pdash-p__result-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.pdash-p__result-note {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.pdash-p__result-note-label {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.pdash-p__result-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.pdash-p__result-toggle {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--blue);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  padding: 0;
+}
+
+.pdash-p__result-download {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  text-decoration: none;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 12px;
+}
+
+.pdash-p__result-download:hover {
+  border-color: var(--text);
+  color: var(--text);
+}
+
+.pdash-p__result-expanded {
+  font-size: 13px;
+  color: var(--muted);
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 12px 14px;
+  line-height: 1.6;
+}
+
 @media (max-width: 600px) {
   .pdash-p { padding: 24px 16px; }
   .pdash-p__row { flex-direction: column; }

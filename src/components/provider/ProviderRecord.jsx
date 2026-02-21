@@ -62,7 +62,7 @@ export default function ProviderRecord() {
 
   const handleStop = () => {
     setStatus('stopped');
-    navigate('/provider/summary');
+    navigate('/provider/loading');
   };
 
   return (

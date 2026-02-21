@@ -19,6 +19,36 @@ const initialAppointments = [
   { id: 1, doctor: 'Dr. Smith', type: 'Follow-up (booked by doctor)', date: '2026-03-05', time: '10:00 AM', byDoctor: true },
 ];
 
+const testResults = [
+  {
+    id: 1,
+    name: 'ECG (Electrocardiogram)',
+    date: '2026-02-21',
+    result: 'Abnormal',
+    status: 'abnormal',
+    doctorNote: 'Mild ST-segment changes observed. Consistent with possible stable angina. Follow-up stress test recommended.',
+    report: '#',
+  },
+  {
+    id: 2,
+    name: 'Blood Pressure',
+    date: '2026-02-21',
+    result: '142/88 mmHg — Slightly elevated',
+    status: 'warning',
+    doctorNote: 'Blood pressure is slightly above normal range. Medication has been prescribed to help manage this.',
+    report: '#',
+  },
+  {
+    id: 3,
+    name: 'Complete Blood Count (CBC)',
+    date: '2026-02-21',
+    result: 'Normal',
+    status: 'normal',
+    doctorNote: 'All values within normal range. No concerns.',
+    report: '#',
+  },
+];
+
 export default function PatientDashboard() {
   const navigate = useNavigate();
   const [tab, setTab] = useState('summary');
@@ -26,6 +56,7 @@ export default function PatientDashboard() {
   const [booking, setBooking] = useState({ doctor: '', type: '', date: '', time: '' });
   const [showBooking, setShowBooking] = useState(false);
   const [booked, setBooked] = useState(false);
+  const [expandedTest, setExpandedTest] = useState(null);
 
   const handleBook = () => {
     if (!booking.doctor || !booking.type || !booking.date || !booking.time) {
@@ -56,6 +87,7 @@ export default function PatientDashboard() {
 
       <div className="pdash-p__tabs">
         <button className={`pdash-p__tab ${tab === 'summary' ? 'is-active' : ''}`} onClick={() => setTab('summary')}>Visit Summary</button>
+        <button className={`pdash-p__tab ${tab === 'results' ? 'is-active' : ''}`} onClick={() => setTab('results')}>Test Results</button>
         <button className={`pdash-p__tab ${tab === 'appointments' ? 'is-active' : ''}`} onClick={() => setTab('appointments')}>Appointments</button>
       </div>
 
@@ -65,12 +97,10 @@ export default function PatientDashboard() {
             <div className="pdash-p__card-label">Visit Summary</div>
             <p className="pdash-p__text">{visitData.summary}</p>
           </div>
-
           <div className="pdash-p__card">
             <div className="pdash-p__card-label">Diagnosis</div>
             <p className="pdash-p__text">{visitData.diagnosis}</p>
           </div>
-
           <div className="pdash-p__card">
             <div className="pdash-p__card-label">Your Medication</div>
             <div className="pdash-p__med">
@@ -84,12 +114,55 @@ export default function PatientDashboard() {
         </div>
       )}
 
+      {tab === 'results' && (
+        <div className="pdash-p__body">
+          <h2 className="pdash-p__section-title">Your Test Results</h2>
+          {testResults.map(t => (
+            <div key={t.id} className={`pdash-p__result pdash-p__result--${t.status}`}>
+              <div className="pdash-p__result-top">
+                <div className="pdash-p__result-left">
+                  <div className="pdash-p__result-name">{t.name}</div>
+                  <div className="pdash-p__result-date">{t.date}</div>
+                </div>
+                <div className="pdash-p__result-right">
+                  <div className={`pdash-p__result-badge pdash-p__result-badge--${t.status}`}>
+                    {t.status === 'normal' ? '✓ Normal' : t.status === 'abnormal' ? '✕ Abnormal' : '⚠ Review'}
+                  </div>
+                </div>
+              </div>
+
+              <div className="pdash-p__result-value">{t.result}</div>
+
+              <div className="pdash-p__result-note">
+                <span className="pdash-p__result-note-label">Doctor's note: </span>
+                {t.doctorNote}
+              </div>
+
+              <div className="pdash-p__result-actions">
+                <button
+                  className="pdash-p__result-toggle"
+                  onClick={() => setExpandedTest(expandedTest === t.id ? null : t.id)}
+                >
+                  {expandedTest === t.id ? 'Hide details' : 'View details'}
+                </button>
+                <a href={t.report} className="pdash-p__result-download">↓ Download Report</a>
+              </div>
+
+              {expandedTest === t.id && (
+                <div className="pdash-p__result-expanded">
+                  <p>Full report details would appear here once connected to the backend. This includes raw values, reference ranges, and lab notes.</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+
       {tab === 'appointments' && (
         <div className="pdash-p__body">
           {booked && (
             <div className="pdash-p__banner">✓ Appointment booked successfully!</div>
           )}
-
           <div className="pdash-p__appt-header">
             <h2 className="pdash-p__section-title">Your Appointments</h2>
             <button className="pdash-p__book-btn" onClick={() => setShowBooking(!showBooking)}>
@@ -103,38 +176,20 @@ export default function PatientDashboard() {
               <div className="pdash-p__form">
                 <div className="pdash-p__field">
                   <label>Doctor</label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Dr. Smith"
-                    value={booking.doctor}
-                    onChange={e => setBooking({ ...booking, doctor: e.target.value })}
-                  />
+                  <input type="text" placeholder="e.g. Dr. Smith" value={booking.doctor} onChange={e => setBooking({ ...booking, doctor: e.target.value })} />
                 </div>
                 <div className="pdash-p__field">
                   <label>Type of Visit</label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Checkup, Follow-up"
-                    value={booking.type}
-                    onChange={e => setBooking({ ...booking, type: e.target.value })}
-                  />
+                  <input type="text" placeholder="e.g. Checkup, Follow-up" value={booking.type} onChange={e => setBooking({ ...booking, type: e.target.value })} />
                 </div>
                 <div className="pdash-p__row">
                   <div className="pdash-p__field">
                     <label>Date</label>
-                    <input
-                      type="date"
-                      value={booking.date}
-                      onChange={e => setBooking({ ...booking, date: e.target.value })}
-                    />
+                    <input type="date" value={booking.date} onChange={e => setBooking({ ...booking, date: e.target.value })} />
                   </div>
                   <div className="pdash-p__field">
                     <label>Time</label>
-                    <input
-                      type="time"
-                      value={booking.time}
-                      onChange={e => setBooking({ ...booking, time: e.target.value })}
-                    />
+                    <input type="time" value={booking.time} onChange={e => setBooking({ ...booking, time: e.target.value })} />
                   </div>
                 </div>
                 <button className="pdash-p__submit" onClick={handleBook}>Confirm Booking</button>
@@ -143,9 +198,7 @@ export default function PatientDashboard() {
           )}
 
           <div className="pdash-p__appt-list">
-            {appointments.length === 0 && (
-              <p className="pdash-p__empty">No upcoming appointments.</p>
-            )}
+            {appointments.length === 0 && <p className="pdash-p__empty">No upcoming appointments.</p>}
             {appointments.map(a => (
               <div key={a.id} className={`pdash-p__appt ${a.byDoctor ? 'pdash-p__appt--doctor' : ''}`}>
                 <div className="pdash-p__appt-info">
