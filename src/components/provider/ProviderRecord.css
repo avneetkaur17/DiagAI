@@ -228,6 +228,18 @@
 
 .prec__note-input button:hover { opacity: 0.9; }
 
+.prec__error {
+  background: var(--red-light);
+  border: 1.5px solid var(--red);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--red);
+  max-width: 780px;
+  margin: 0 auto;
+}
+
 @media (max-width: 640px) {
   .prec { padding: 24px 16px; }
   .prec__body { grid-template-columns: 1fr; }
