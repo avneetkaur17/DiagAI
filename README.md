@@ -61,5 +61,5 @@ An AI-powered medical scribe and patient portal built at HackUTD.
 
 ## Team
 
-- Backend (API routes, Whisper/GPT-4o integration, Supabase): Aman
+- Backend (API routes, Whisper/GPT-4o integration, Supabase): Anshika
 - Frontend (Provider & Patient portals, UI/UX): Avneet
